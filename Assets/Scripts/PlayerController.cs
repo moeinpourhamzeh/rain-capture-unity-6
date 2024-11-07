@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private float _speed = 5f;
+    [SerializeField] private DropletBehaviour _dropletBehaviour;
+    
+    private float _speed = 10f;
     private float _inputHorizontal;
     
     
@@ -11,6 +13,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _dropletBehaviour.SpawnDroplet();
     }
 
     // Update is called once per frame
@@ -23,4 +26,6 @@ public class PlayerController : MonoBehaviour
             _rb.AddForce(new Vector2(_inputHorizontal * _speed, 0f));
         }
     }
+    
+    
 }
